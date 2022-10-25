@@ -1,0 +1,51 @@
+public class TriggerHelper {
+    
+    private static final Map<String, Set<Id>> processedRecords = new Map<String, Set<Id>>();
+    /*
+     * @description: will return true if in recursive state.
+     * Taking new and old record id's so work with all trigger events like insert/update/delete/undelete
+     * @example
+	 * if(TriggerHelper.runOnce(Trigger.newMap?.keySet(),Trigger.oldMap?.keySet(),Trigger.operationType)){
+	 * 		return;
+	 *	}
+     */
+     
+    public static boolean runOnce(Set<Id> newRecordIds,Set<Id> oldRecordIds, TriggerOperation operation) 
+    {
+        Set<Id>recordIds=newRecordIds;
+        if(newRecordIds==null)
+            recordIds=oldRecordIds;
+        //
+        if(recordIds==null)
+            return false;
+        
+        for(Id recordId:recordIds)
+        {
+            if(validateRecursive(recordId,operation.name()))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    private static boolean validateRecursive(Id recordId,String operation){
+        Boolean recursive=false;
+        if(processedRecords.containsKey(operation))
+        {
+            Set<Id> records=processedRecords.get(operation);
+            if(records.contains(recordId))
+            {
+                recursive=true;
+                return recursive;
+            }
+            records.add(recordId);
+        }
+        else{
+            Set<Id> records=new Set<Id>();
+            records.add(recordId);
+            processedRecords.put(operation, records);
+        }
+        return recursive;
+    }
+}

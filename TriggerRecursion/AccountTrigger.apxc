@@ -1,0 +1,32 @@
+trigger AccountTrigger on Account (before insert, before update, before delete, after insert, after update, after delete, after undelete) {
+    
+    if(TriggerHelper.runOnce(Trigger.newMap?.keySet(),Trigger.oldMap?.keySet(),Trigger.operationType)){
+        return;
+    }
+
+    TriggerHandler handler = new AccountTriggerHandler();
+    
+    switch on Trigger.operationType {
+        when BEFORE_INSERT {
+            handler.beforeInsert(Trigger.new);
+        }
+        when AFTER_INSERT {
+            handler.afterInsert(Trigger.new, Trigger.newMap);
+        }
+        when BEFORE_UPDATE {
+            handler.beforeUpdate(Trigger.newMap,Trigger.oldMap);
+        }
+        when AFTER_UPDATE {
+            handler.afterUpdate(Trigger.newMap, Trigger.oldMap);
+        }
+        when BEFORE_DELETE {
+            handler.beforeDelete(Trigger.oldMap);
+        }
+        when AFTER_DELETE {
+            handler.afterDelete(Trigger.oldMap);
+        }
+        when AFTER_UNDELETE {
+            handler.afterUndelete(Trigger.newMap);
+        }
+    }
+}

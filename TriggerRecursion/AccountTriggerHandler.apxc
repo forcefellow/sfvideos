@@ -1,0 +1,44 @@
+/*
+ * 
+ */
+public class AccountTriggerHandler implements TriggerHandler {
+    @TestVisible
+    private AccountTriggerHelper helper=null;
+    
+    public AccountTriggerHandler(){
+        helper=new AccountTriggerHelper();
+    }
+    
+    public void beforeInsert(List<sObject>newRecords)
+    {
+        
+    }
+    public void afterInsert(List<sObject>newRecords,Map<Id,sObject>newRecordsMap)
+    {
+        
+    }
+    
+    public void beforeUpdate(Map<Id,sObject>newRecordsMap,Map<Id,sObject>oldRecordsMap)
+    {
+        
+    }
+    public void afterUpdate(Map<Id,sObject>newRecordsMap,Map<Id,sObject>oldRecordsMap)
+    {
+       
+    }
+    
+    public void beforeDelete(Map<Id,sObject>oldRecordsMap)
+    {
+      
+    }
+    
+    public void afterDelete(Map<Id,sObject>oldRecordsMap)
+    {
+        
+    }
+    
+    public void afterUndelete(Map<Id,sObject>newRecordsMap)
+    {
+        
+    }
+}
