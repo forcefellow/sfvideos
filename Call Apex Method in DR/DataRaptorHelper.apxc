@@ -1,0 +1,27 @@
+public class DataRaptorHelper implements Callable {
+    public Object call(String action, Map<String,Object>args){
+        
+        Map<String,Object>input=(Map<String,Object>)args.get('input');
+        Map<String,Object>output=(Map<String,Object>)args.get('output');
+        Map<String,Object>options=(Map<String,Object>)args.get('options');
+        
+        return invokeMethod(action,input,output,options);
+    }
+    
+    public boolean invokeMethod(String methodName, Map<String,Object> input,Map<String,Object> output,Map<String,Object> options)
+    {
+        try{
+            if(methodName.equalsIgnoreCase('getTotalAccountsCount'))
+            {
+                List<Object> arg = (List<Object>)input.get('arguments');
+             	output.put('result',arg.size());
+            }
+            
+        }
+        catch(Exception e){
+            return false;
+        }
+        return true;
+    }
+    
+}
