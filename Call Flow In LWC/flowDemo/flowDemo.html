@@ -1,0 +1,10 @@
+<template>
+    <lightning-card>
+        <lightning-input label="First Name" class="slds-m-around_small" data-name="firstName"></lightning-input>
+        <lightning-input label="Last Name" class="slds-m-around_small" data-name="lastName"></lightning-input>
+
+        <lightning-button label="Show Flow" class="slds-m-around_small" onclick={showFlowHandler}></lightning-button>
+
+        <lightning-flow flow-api-name="userDetailsFlow" flow-input-variables={flowVariables} onstatuschange={handleFlowStatusChange} if:true={isShowFlow}></lightning-flow>
+    </lightning-card>
+</template>
