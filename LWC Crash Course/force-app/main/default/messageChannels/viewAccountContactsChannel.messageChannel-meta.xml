@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <masterLabel>viewAccountContactsChannel</masterLabel>
+	
+    <isExposed>true</isExposed>
+	
+    <description>This is a sample Lightning Message Channel.</description>
+	
+    <lightningMessageFields>
+        <fieldName>accountId</fieldName>
+        <description>This is data parameter that you want to send through LMS</description>
+    </lightningMessageFields>
+
+    <lightningMessageFields>
+        <fieldName>accountName</fieldName>
+        <description>This is data parameter that you want to send through LMS</description>
+    </lightningMessageFields>
+	
+</LightningMessageChannel>

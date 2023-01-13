@@ -1,0 +1,49 @@
+<template>
+    <lightning-card>
+        <h1>
+            {sampleText}
+        </h1>
+        <c-hello-india></c-hello-india>
+        <div>
+            <p>Employee Name: {employee.Name}</p>
+            <p>Employee Age: {employee.Age}</p>
+            <p>Employee City: {employee.City}</p>
+            <p>Employee Salary: {employee.Salary}</p>
+            <p>Employee Band: {getEmployeeCode}</p>
+        </div>
+        <h1>For Each Example</h1>
+        <table class="slds-table slds-table_bordered">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Age</td>
+                    <td>City</td>
+                    <td>Salary</td>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={employeeList} for:item="employee">
+                    <tr key={employee.Code}>
+                        <td>{employee.Name}</td>
+                        <td>{employee.Age}</td>
+                        <td>{employee.City}</td>
+                        <td>{employee.Salary}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+<h1>Iterator Example</h1>
+        <ul class="slds-m-around_medium">
+            <template iterator:employee={employeeList}>
+                <li key={employee.value.Code}>
+                    <div if:true={employee.first} style="border-top: 1px solid #ddd"></div>
+                    {employee.value.Name}
+                    <div if:true={employee.last} style="border-bottom: 1px solid #ddd"></div>
+                </li>
+            </template>
+
+        </ul>
+        <br/>
+    </lightning-card>
+    
+</template>

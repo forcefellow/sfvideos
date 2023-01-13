@@ -1,0 +1,75 @@
+<template>
+    <lightning-card title={title}>
+        <lightning-layout multiple-rows class="slds-p-around_small">
+            <lightning-layout-item size="12">
+                <template if:true={isAccountSelected}>
+                    <lightning-button-icon icon-name="utility:adduser" variant="brand" alternative-text="Add Contact"
+                        class="slds-m-left_xx-small" title="Add Contact" onclick={addContactHandler}
+                        >
+                    </lightning-button-icon>
+                    <template if:true={hasContacts}>
+                        <template for:each={contacts} for:item="contact">
+                            <lightning-layout class="slds-box slds-m-around_small" key={contact.Id}>
+                                <lightning-layout-item size="8">
+                                    <strong>{contact.Name}</strong>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="4">
+                                    <lightning-button-icon icon-name="utility:edit" variant="brand"
+                                        alternative-text="Edit" class="slds-m-left_xx-small" title="Edit"
+                                        onclick={editContactHandler} data-contact-id={contact.Id}>
+                                    </lightning-button-icon>
+                                    <lightning-button-icon icon-name="utility:delete" variant="brand"
+                                        alternative-text="Delete" class="slds-m-left_xx-small" title="Delete"
+                                        onclick={deleteContactHandler} data-contact-id={contact.Id}>
+                                    </lightning-button-icon>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </template>
+
+                    </template>
+                    <template if:false={hasContacts}>
+                        <div class="slds-align_absolute-center">
+                            No contacts found
+                        </div>
+                    </template>
+                </template>
+                <template if:false={isAccountSelected}>
+                    <div class="slds-align_absolute-center">
+                        No account selected
+                    </div>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+    <template if:true={isShowModalPopup}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+            class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <button onclick={popupCloseHandler}
+                    class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Cancel and close</span>
+                </button>
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Contact Edit</h1>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning-record-edit-form object-api-name="Contact" record-id={editableContactId}
+                        onsuccess={successHandler}>
+                        <lightning-input-field field-name="Name"> </lightning-input-field>
+                        <lightning-input-field field-name="AccountId" value={accountId}> </lightning-input-field>
+                        <div class="slds-var-m-top_medium">
+                            <lightning-button variant="brand" type="submit" label="Save">
+                            </lightning-button>
+                        </div>
+                    </lightning-record-edit-form>
+
+                </div>
+
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </template>
+</template>
