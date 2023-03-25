@@ -1,0 +1,8 @@
+<template>
+    <lightning-card title="Products" icon-name="standard:product">
+        <div class="slds-var-p-around_medium">
+            <c-custom-data-table key-field="id" data={products} columns={columns}
+                hide-checkbox-column="true"></c-custom-data-table>
+        </div>
+    </lightning-card>
+</template>
