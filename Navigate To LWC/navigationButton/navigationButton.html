@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Navigate To LWC Demo">
+        <lightning-layout class="slds-p-around_small">
+            <lightning-layout-item size="6">
+                <lightning-input label="User Name" lwc:ref="userName"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6">
+                <lightning-button variant="success" label="Navigate To LWC" class="slds-m-left_small"
+                    onclick={navigateToLWCHandler}></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>
