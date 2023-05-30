@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Workspace API Demo in LWC">
+        <lightning-layout class="slds-p-around_small">
+            <lightning-layout-item>
+                <lightning-button variant="netural" label="Open a new Tab"
+                    onclick={openNewTabHandler}></lightning-button>
+                <lightning-button variant="brand" label="Open a new Sub Tab"
+                    onclick={openNewSubTabHandler}></lightning-button>
+                <lightning-button variant="brand-outline" label="Refresh Tab"
+                    onclick={refreshTabHandler}></lightning-button>
+                <lightning-button variant="success" label="Get all Tabs Info"
+                    onclick={getAllTabsInfoHandler}></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <div class="slds-p-around_small">{tabsInfo}</div>
+    </lightning-card>
+</template>
