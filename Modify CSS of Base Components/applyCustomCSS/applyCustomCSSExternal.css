@@ -1,0 +1,6 @@
+.custom-brand .slds-input,.custom-brand .slds-button{
+    border-radius:25px;
+}
+.custom-brand lightning-radio-group .slds-form-element__control{
+    display:flex;
+}

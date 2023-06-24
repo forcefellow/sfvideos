@@ -1,0 +1,40 @@
+<template>
+    <lightning-card title="Custom" class="custom-brand">
+        <lightning-layout multiple-rows class="slds-p-around_small">
+            <lightning-layout-item size="12">
+                <lightning-input label="First Name"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12">
+                <lightning-input label="Last Name"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12">
+                <lightning-radio-group name="radioGroup" label="Radio Group" options={options} value={value}
+                    type="radio"></lightning-radio-group>
+            </lightning-layout-item>
+
+            <lightning-layout-item class="slds-align_absolute-center slds-m-top_small" size="12">
+                <lightning-button variant="neutral" label="Cancel" class="slds-m-right_small"></lightning-button>
+                <lightning-button variant="brand" label="Save" onclick={saveClickHandler}></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+    <lightning-card title="Custom">
+        <lightning-layout multiple-rows class="slds-p-around_small">
+            <lightning-layout-item size="12">
+                <lightning-input label="First Name"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12">
+                <lightning-input label="Last Name"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12">
+                <lightning-radio-group name="radioGroup" label="Radio Group" options={options} value={value}
+                    type="radio"></lightning-radio-group>
+            </lightning-layout-item>
+
+            <lightning-layout-item class="slds-align_absolute-center slds-m-top_small" size="12">
+                <lightning-button variant="neutral" label="Cancel" class="slds-m-right_small"></lightning-button>
+                <lightning-button variant="brand" label="Save" onclick={saveClickHandler}></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

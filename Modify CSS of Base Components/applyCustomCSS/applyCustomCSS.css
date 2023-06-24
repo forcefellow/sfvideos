@@ -1,0 +1,8 @@
+:host{
+
+}
+.custom-brand{
+    --slds-c-button-brand-color-background:#0bd41f;
+    --slds-c-button-neutral-color-background:#f5d60f;
+    --slds-c-button-text-color:#fff;
+}
