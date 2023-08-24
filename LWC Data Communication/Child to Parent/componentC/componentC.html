@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Component C">
+        <div class="slds-p-around_large">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="9">
+                    <lightning-input label="Name" lwc:ref="userName"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="2" class="slds-m-top_large slds-m-left_small">
+                    <lightning-button label="Submit" onclick={submitClickHandler}></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+</template>

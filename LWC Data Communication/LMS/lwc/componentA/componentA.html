@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Component A">
+        <div class="slds-p-around_large">
+
+            <div class="slds-align_absolute_center slds-text-heading_large">
+                Entered Name : <b>{userName}</b>
+            </div>
+            <div class="slds-m-top_large">
+                <c-component-b onusernamechange={userNameChangeHandler}></c-component-b>
+            </div>
+        </div>
+    </lightning-card>
+</template>
