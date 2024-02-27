@@ -1,0 +1,99 @@
+<template>
+    <lightning-card>
+        <lightning-accordion active-section-name={section} onsectiontoggle={handleSectionToggle}>
+            <!-- TRACK DECORATOR -->
+            <lightning-accordion-section name="track" label="Track Decorator Example">
+                <lightning-layout>
+                    <lightning-layout-item size="3" class="slds-border_right">
+                        <lightning-card title="Example 1">
+                            <div class="slds-p-around_small">
+                                <p class="slds-m-bottom_small"><strong>Counter : </strong> {counter}</p>
+                                <lightning-button label="Counter +" variant="brand"
+                                    onclick={example1CounterClickHandler}></lightning-button>
+                            </div>
+                        </lightning-card>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="3" class="slds-border_right">
+                        <lightning-card title="Example 2">
+                            <div class="slds-p-around_small">
+                                <p class="slds-m-bottom_small"><strong>Counter : </strong> {example2Obj.counter}</p>
+                                <lightning-button label="Counter +" variant="brand"
+                                    onclick={example2CounterClickHandler}></lightning-button>
+                            </div>
+                        </lightning-card>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="3" class="slds-border_right">
+                        <lightning-card title="Example 3">
+                            <div class="slds-p-around_small">
+                                <p class="slds-m-bottom_small"><strong>Counter : </strong> {example3Obj.counter}</p>
+                                <lightning-button label="Counter +" variant="brand"
+                                    onclick={example3CounterClickHandler}></lightning-button>
+                            </div>
+                        </lightning-card>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="3">
+                        <lightning-card title="Example 4">
+                            <div class="slds-p-around_small">
+                                <p class="slds-m-bottom_small"><strong>Counter : </strong> {example4Obj.counter}</p>
+                                <lightning-button label="Counter +" variant="brand"
+                                    onclick={example4CounterClickHandler}></lightning-button>
+                            </div>
+                        </lightning-card>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-accordion-section>
+
+            <!-- API DECORATOR -->
+            <lightning-accordion-section name="api" label="Api Decorator Example">
+                <lightning-layout>
+                    <lightning-layout-item size="6" class="slds-border_right">
+                        <lightning-card title="Parent Component">
+                            <div class="slds-p-around_small">
+                                <lightning-input lwc:ref="numberOne" label="Enter number 1"></lightning-input>
+                                <lightning-input lwc:ref="numberTwo" label="Enter number 2"
+                                    class="slds-m-bottom_small"></lightning-input>
+
+                                <lightning-button label="Submit" variant="brand" onclick={apiSubmitClickHandler}
+                                    class="slds-m-right_small"></lightning-button>
+                                <lightning-button label="Multiply" variant="warning"
+                                    onclick={multiplyClickHandler}></lightning-button>
+                            </div>
+                        </lightning-card>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="6">
+                        <!-- <c-decorators-demo-child lwc:ref="childDemo" number-one={number1}
+                            number-two={number2}></c-decorators-demo-child> -->
+
+                        <c-decorators-demo-child lwc:ref="childDemo"></c-decorators-demo-child>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-accordion-section>
+
+            <!-- WIRE DECORATOR -->
+            <lightning-accordion-section name="wire" label="Wire Decorator Example">
+                <div class="slds-p-around_small slds-border_top">
+                    <lightning-layout>
+                        <lightning-layout-item size="5">
+                            {getAccountsCount}
+                            <lightning-input lwc:ref="searchText" placeholder="Search...."
+                                variant="label-hidden"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item>
+                            <lightning-button label="Search" variant="brand" class="slds-m-left_small slds-m-top_large"
+                                onclick={searchAccountsClickHandler}></lightning-button>
+                        </lightning-layout-item>
+                    </lightning-layout>
+
+                    <div class="slds-m-top_small">
+                        <lightning-datatable key-field="Id" data={accountsList} hide-checkbox-column columns={columns}>
+                        </lightning-datatable>
+                    </div>
+                </div>
+            </lightning-accordion-section>
+        </lightning-accordion>
+    </lightning-card>
+</template>
