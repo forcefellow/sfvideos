@@ -1,0 +1,29 @@
+<template>
+    <!-- LOADER -->
+    <template lwc:if={isLoading}>
+        <lightning-spinner variant="brand" size="large"></lightning-spinner>
+    </template>
+
+    <!-- ITEMS ITERATION -->
+    <lightning-layout multiple-rows>
+        <template for:each={recordsToDisplay} for:item="record">
+            <lightning-layout-item key={record.Id} size="4">
+                <div class="slds-box slds-box_small slds-m-around_small">
+                    <p><strong>Account Name :</strong> {record.Name}</p>
+                    <p><strong>Type :</strong> {record.Type}</p>
+                    <p><strong>Rating :</strong> {record.Rating}</p>
+                </div>
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>
+
+    <!-- PAGINATION -->
+    <c-paginator lwc:if={showPaginator} page-size={pageSize} total-records={totalRecords}
+        items-per-page-options={itemsPerPageOptions} onpaginationchange={paginationChangeHandler}></c-paginator>
+
+    <!-- NO RECORDS FOUND -->
+    <template if:false={hasRecords}>
+        <div class="slds-align_absolute-center slds-text-heading_medium slds-p-around_small">No records to displays
+        </div>
+    </template>
+</template>

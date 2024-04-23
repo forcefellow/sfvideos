@@ -1,0 +1,20 @@
+<template>
+    <!-- LOADER -->
+    <template lwc:if={isLoading}>
+        <lightning-spinner variant="brand" size="large"></lightning-spinner>
+    </template>
+
+    <!-- DATATABLE -->
+    <lightning-datatable key-field="Id" data={recordsToDisplay} hide-checkbox-column columns={columns}>
+    </lightning-datatable>
+
+    <!-- PAGINATION -->
+    <c-paginator lwc:if={showPaginator} page-size={pageSize} total-records={totalRecords}
+        is-client-side-pagination="true" onpaginationchange={paginationChangeHandler}></c-paginator>
+
+    <!-- NO RECORDS FOUND -->
+    <template if:false={hasRecords}>
+        <div class="slds-align_absolute-center slds-text-heading_medium slds-p-around_small">No records to displays
+        </div>
+    </template>
+</template>
