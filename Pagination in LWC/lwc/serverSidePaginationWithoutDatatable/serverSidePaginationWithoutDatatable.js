@@ -47,6 +47,7 @@ export default class ServerSidePaginationWithoutDatatable extends LightningEleme
             this.records = [...this.records, ...this.recordsToDisplay];
         }
         catch (err) {
+			this.isLoading = false;
             console.log('Error while fetching data- ', JSON.stringify(err));
         }
     }
@@ -60,15 +61,16 @@ export default class ServerSidePaginationWithoutDatatable extends LightningEleme
             }
             this.pageNumber = event.detail.pageNumber;
             //if (event.detail.operationType == 'NEXT') {
-            if (this.records.length < (this.pageSize * this.pageNumber)) {  // GET MORE DATA FROM SERVER...
-                this.lastRecordId = this.records[this.records.length - 1]?.Id;
-                this.isLoading = true;
-                this.fetchRecordsFromServer();
-            }
-            else { // GET AND SHOW DATA FROM RECORDS LIST...
+				
+			if (this.records.length > this.pageSize * (this.pageNumber - 1)) { // GET AND SHOW DATA FROM RECORDS LIST...
                 let from = (this.pageNumber - 1) * this.pageSize,
                     to = this.pageSize * this.pageNumber;
                 this.recordsToDisplay = this.records?.slice(from, to);
+            }
+            else {  // GET MORE DATA FROM SERVER...
+			    this.lastRecordId = this.records[this.records.length - 1]?.Id;
+                this.isLoading = true;
+                this.fetchRecordsFromServer();
             }
         }
     }
